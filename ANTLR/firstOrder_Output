@@ -1,5 +1,4 @@
-pc=m∧pc'=&∧pc1'=La0∧pc2'=Lb0 ∨
-
+PC=m∧PC'=&∧PCa'=La0∧PCb'=Lb0 ∨
 x'=0∧Same(x)∧PCa=La0∧PCa''=La1 ∨
 y'=0∧Same(y)∧PCa=La1∧PCa''=La2 ∨
 z'=0∧Same(z)∧PCa=La2∧PCa''=La3 ∨
@@ -14,8 +13,6 @@ x'=x+1∧Same(x)∧PCa=La9∧PCa'=La7 ∨
 y'=y+1∧Same(y)∧PCa=La10∧PCa'=La7 ∨
 y'=y+2∧Same(y)∧PCa=La7∧PCa'=La5 ∨
 !(y<3)∧Same(V)∧PCa=La5∧PCa'=La11 ∨
-
-
 x'=0∧Same(x)∧PCb=Lb0∧PCb''=Lb1 ∨
 y'=0∧Same(y)∧PCb=Lb1∧PCb''=Lb2 ∨
 z'=0∧Same(z)∧PCb=Lb2∧PCb''=Lb3 ∨
@@ -30,7 +27,4 @@ x'=x+1∧Same(x)∧PCb=Lb9∧PCb'=Lb7 ∨
 y'=y+1∧Same(y)∧PCb=Lb10∧PCb'=Lb7 ∨
 y'=y+2∧Same(y)∧PCb=Lb7∧PCb'=Lb5 ∨
 !(y<3)∧Same(V)∧PCb=Lb5∧PCb'=Lb11 ∨
-
-
-
-pc=&∧pc'=m'∧pc1=La11∧pc2=La11∧pc1'=&∧pc2'=& ∨
+PC=&∧PC'=m'∧PCa=La11∧PCb=La11∧PCa'=&∧PCb'=& ∨

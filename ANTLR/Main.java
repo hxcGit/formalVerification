@@ -47,7 +47,7 @@ public class Main {
         ParserRuleContext tree1 = parser1.mainnode();
         ParserRuleContext tree2 = parser2.mainnode();
         // Vizitam AST-ul
-        System.out.println("pc=m∧pc'=&∧pc1'=La0∧pc2'=Lb0 ∨"); 
+        System.out.println("PC=m∧PC'=&∧PCa'=La0∧PCb'=Lb0 ∨"); 
         processFinish = new ArrayList();
         MyVisitor visitor = new MyVisitor();
         visitor.visit(tree1);
@@ -55,6 +55,6 @@ public class Main {
         visitor = new MyVisitor();
         visitor.visit(tree2);
 
-        System.out.println("pc=&∧pc'=m'∧pc1="+processFinish.get(0)+"∧pc2="+ processFinish.get(0) +"∧pc1'=&∧pc2'=& ∨");
+        System.out.println("PC=&∧PC'=m'∧PCa="+processFinish.get(0)+"∧PCb="+ processFinish.get(0) +"∧PCa'=&∧PCb'=& ∨");
     }
 }
