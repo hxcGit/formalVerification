@@ -1,55 +1,57 @@
 grammar Hello;
 
 /* Parser Rules */
-mainnode 	  : sequencenode | statement ;
+mainnode: sequencenode | statement;
 
-expr  : bracketnode
-      | expr minusnode expr
-	  | expr plusnode expr
-	  | expr timesnode expr
-      | varnode
-      | intnode
-	  ;
+expr:
+	bracketnode
+	| expr minusnode expr
+	| expr plusnode expr
+	| expr timesnode expr
+	| varnode
+	| intnode;
 
-bexpr :	bracketnode
- 	  | notnode bexpr
-	  | bexpr andnode bexpr
-	  | bexpr ornode bexpr
-	  | expr lessernode expr
-	  | expr equalnode expr
-	  | boolnode
-	  ;
+bexpr:
+	bracketnode
+	| notnode bexpr
+	| bexpr andnode bexpr
+	| bexpr ornode bexpr
+	| expr lessernode expr
+	| expr equalnode expr
+	| boolnode;
 
-sequencenode  : statement statement | statement sequencenode;
+sequencenode: statement statement | statement sequencenode;
 
-lessernode    : '<' ;
-equalnode     : '==';
+lessernode: '<';
+equalnode: '==';
 
-andnode       : '&&';
-notnode		  : '!' ;
-ornode		  : '||' ;
+andnode: '&&';
+notnode: '!';
+ornode: '||';
 
-plusnode 	  : '+' ;
-minusnode 	  : '-' ;
-timesnode 	  : '*' ;
+plusnode: '+';
+minusnode: '-';
+timesnode: '*';
 
-bracketnode   : '(' expr ')' | '(' bexpr ')';
-blocknode	  : '{''}' | '{' sequencenode '}' | '{' statement '}' ;
-assigmentnode : varnode ':=' expr ';';
-statement 	  : assigmentnode | whilenode | ifnode;
+bracketnode: '(' expr ')' | '(' bexpr ')';
+blocknode: '{' '}' | '{' sequencenode '}' | '{' statement '}';
+assigmentnode: varnode ':=' expr ';';
+statement: assigmentnode | whilenode | ifnode | waitnode;
 
-ifnode 		  : 'if' bexpr 'then' blocknode 'else' blocknode ;
+ifnode: 'if' bexpr 'then' blocknode 'else' blocknode;
 
-whilenode 	  :	'while' bexpr 'do' blocknode ;
-boolnode 	  : BVAL ;
-varnode 	  : VAR ;
-intnode 	  : AVAL ;
+whilenode: 'while' bexpr 'do' blocknode;
+
+waitnode: 'wait' bexpr ';';
+boolnode: BVAL;
+varnode: VAR;
+intnode: AVAL;
 
 /* Lexer Rules */
-fragment NUMBER     : [0-9] ;
-fragment STRING 	: [a-z]+ ;
-WS 			     	: [ \t\r\n]+ -> skip ;
-BVAL                : 'true' | 'false' ;
-VAR 				: STRING ;
-AVAL 				: NUMBER ;
+fragment NUMBER: [0-9];
+fragment STRING: [a-z]+;
+WS: [ \t\r\n]+ -> skip;
+BVAL: 'true' | 'false';
+VAR: STRING;
+AVAL: NUMBER;
 

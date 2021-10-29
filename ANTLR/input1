@@ -8,13 +8,14 @@ do
 {
     if (x < y) then
     {
+        wait(x==1);
         x := x + 1;
     }
     else
     {
          y := y + 1;
     }
-
+    
     y := y + 2;
 }
 

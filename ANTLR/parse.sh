@@ -11,9 +11,9 @@ if [ $1 = "0" ]; then
 
 else
 	#下面是执行
-	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-	ANTLR_FILE="/antlr-4.7.1-complete.jar"
-	FILE_PATH="$DIR$ANTLR_FILE"
-	export CLASSPATH="$CLASSPATH:$FILE_PATH"
+	#DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+	ANTLR_FILE="./antlr-4.7.1-complete.jar"
+	#FILE_PATH="$DIR$ANTLR_FILE"
+	export CLASSPATH="$CLASSPATH:$ANTLR_FILE"
 	java  Main
 fi
