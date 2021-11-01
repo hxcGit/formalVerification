@@ -27,8 +27,6 @@ type seq struct {
 	child  int
 }
 
-var statea state
-var stateb state
 var globalANum int
 var globalBNum int
 var global int
@@ -38,6 +36,7 @@ var handleList []state
 var globalStateNum int
 var seqMap []seq
 var buff string
+
 func getItem(str string) firstItem {
 	s := strings.Split(str, "&")
 	pca := strings.Split(s[0], "=")
@@ -66,9 +65,9 @@ func notExist(st state) int {
 	return -1
 }
 func test() {
-	li := []int{3,4,7,8,10,11}
-	for i:=0;i<len(li);i++ {
-		seqMap = append(seqMap, seq{li[i],li[i]})
+	li := []int{3, 4, 7, 8, 10, 11}
+	for i := 0; i < len(li); i++ {
+		seqMap = append(seqMap, seq{li[i], li[i]})
 	}
 }
 func deal(item state) {
@@ -79,7 +78,7 @@ func deal(item state) {
 				//说明这里是判断表达式
 				if matchItems[i].action == "true" {
 					newState := state{matchItems[i].pcNext, item.pcb, item.t, global + 1}
-					if reSeq:=notExist(newState);reSeq!=-1 {
+					if reSeq := notExist(newState); reSeq != -1 {
 						seqMap = append(seqMap, seq{item.seq, reSeq})
 						return
 					}
@@ -89,14 +88,14 @@ func deal(item state) {
 					global = global + 1
 				} else {
 					s := strings.Split(matchItems[i].action, "==")
-					if (len(s) < 2) {
+					if len(s) < 2 {
 						return
 					}
 					num, _ := strconv.Atoi(s[1])
 					if item.t == num {
 
 						newState := state{matchItems[i].pcNext, item.pcb, item.t, global + 1}
-						if reSeq:=notExist(newState);reSeq!=-1 {
+						if reSeq := notExist(newState); reSeq != -1 {
 							seqMap = append(seqMap, seq{item.seq, reSeq})
 
 							return
@@ -111,11 +110,11 @@ func deal(item state) {
 			}
 
 		} else if matchItems[i].samePC == "Same(PCb)" {
-			
+
 			if matchItems[i].same == "Same(V)" {
 				if matchItems[i].action == "true" {
 					newState := state{item.pca, matchItems[i].pcNext, item.t, global + 1}
-					if reSeq:=notExist(newState);reSeq!=-1 {
+					if reSeq := notExist(newState); reSeq != -1 {
 						seqMap = append(seqMap, seq{item.seq, reSeq})
 						return
 					}
@@ -124,13 +123,13 @@ func deal(item state) {
 					global = global + 1
 				} else {
 					s := strings.Split(matchItems[i].action, "==")
-					if (len(s)<2) {
+					if len(s) < 2 {
 						return
 					}
 					num, _ := strconv.Atoi(s[1])
 					if item.t == num {
 						newState := state{item.pca, matchItems[i].pcNext, item.t, global + 1}
-						if reSeq:=notExist(newState);reSeq!=-1 {
+						if reSeq := notExist(newState); reSeq != -1 {
 							seqMap = append(seqMap, seq{item.seq, reSeq})
 							//globalANum = globalANum + 1
 							return
@@ -181,17 +180,17 @@ func main() {
 	}
 	test()
 	out_file, err := os.OpenFile("/root/analysisVerificationOfsystem/firstToKS/outputks", os.O_CREATE|os.O_WRONLY, 0)
-    if err != nil {
-        fmt.Println("打开文件失败")
-        return
+	if err != nil {
+		fmt.Println("打开文件失败")
+		return
 	}
 	fmt.Fprintf(file, "abc123222")
-	
+
 	for i := 0; i < len(handleList); i++ {
-		fmt.Fprintf(out_file, fmt.Sprintf("S%d[label=\"S%d\\n(%s,%s,%d)\"]\n",handleList[i].seq,handleList[i].seq,handleList[i].pca,handleList[i].pcb,handleList[i].t))
+		fmt.Fprintf(out_file, fmt.Sprintf("S%d[label=\"S%d\\n(%s,%s,%d)\"]\n", handleList[i].seq, handleList[i].seq, handleList[i].pca, handleList[i].pcb, handleList[i].t))
 	}
 	for _, v := range seqMap {
-		fmt.Fprintf(out_file, fmt.Sprintf("S%d->S%d\n",v.parent,v.child))
+		fmt.Fprintf(out_file, fmt.Sprintf("S%d->S%d\n", v.parent, v.child))
 	}
 	out_file.Close()
 }
