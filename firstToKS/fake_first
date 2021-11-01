@@ -1,0 +1,8 @@
+PCa=La1&PCa'=La2&true&Same(V)&Same(PCa) | 
+PCa=La2&PCa'=La3&t==0&Same(V)&Same(PCa) | 
+PCa=La2&PCa'=La2&t!=0&Same(V)&Same(PCa) | 
+PCa=La3&PCa'=La4&t=1&Same(t)&Same(PCa) | 
+PCb=Lb1&PCb'=Lb2&true&Same(V)&Same(PCb) | 
+PCb=Lb2&PCb'=Lb3&t==1&Same(V)&Same(PCb) | 
+PCb=Lb2&PCb'=Lb2&t!=1&Same(V)&Same(PCb) |
+PCb=Lb3&PCb'=Lb4&t=0&Same(t)&Same(PCb) | 

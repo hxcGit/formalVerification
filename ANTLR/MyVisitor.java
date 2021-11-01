@@ -56,7 +56,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 				String in_pc  = "L" + index + String.valueOf(label_seq);
 				String out_pc = "L" + index + String.valueOf(++label_seq);
 
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC"  + index + "''=" + out_pc + " ∨");
 				visit(ctx.getChild(1));
 			}
@@ -76,7 +76,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 				String in_pc  = "L" + index + String.valueOf(label_seq);
 				String out_pc = "L" + index + String.valueOf(++label_seq);
 
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC" + index + "'=" + out_pc + " ∨");
 
 				visit(ctx.getChild(1));
@@ -97,7 +97,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 				}
 				in_pc = "L"+ index + String.valueOf(label_seq);
 				
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC" + index + "'=" + out_pc + " ∨");
 				
 			}
@@ -122,7 +122,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 					out_pc = "L"+ index + String.valueOf(++label_seq);
 					Main.processFinish.add(out_pc);
 				}
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index +"=" + in_pc + "∧" + "PC" + index + "'=" + out_pc + " ∨");
 			}
 			if (ctx.statement(0).ifnode() != null && ctx.statement(1).assigmentnode() != null)
@@ -146,7 +146,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 					out_pc = "L"+ index + String.valueOf(++label_seq);
 					Main.processFinish.add(out_pc);
 				}
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC" + index + "'=" + out_pc + " ∨");
 			}
 			if (ctx.statement(0).assigmentnode() != null && ctx.statement(1).whilenode() != null)
@@ -155,7 +155,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 				String in_pc  = "L"+ index + String.valueOf(label_seq);
 				String out_pc = "L"+ index + String.valueOf(++label_seq);
 
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC"+ index + "'=" + out_pc + " ∨");
 				int pos = GetPosition();
 				if (pos==0) whileIslast = true;
@@ -182,7 +182,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 					out_pc = "L"+ index + String.valueOf(++label_seq);
 					Main.processFinish.add(out_pc);
 				}
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same("
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same("
 							+ this.true_varName + ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC" + index + "'=" + out_pc + " ∨");
 			}
 		}
@@ -282,7 +282,7 @@ class MyVisitor extends HelloBaseVisitor<Integer> {
 				else out_pc = "L"+ index + String.valueOf(++label_seq);
 				visit(ctx.statement());
 
-				System.out.println(this.true_varName + "'=" + this.global_varValue + "∧" + "Same(" + this.true_varName
+				System.out.println(this.true_varName + "=" + this.global_varValue + "∧" + "Same(" + this.true_varName
 						+ ")" + "∧" + "PC" + index + "=" + in_pc + "∧" + "PC" + index + "'=" + out_pc + " ∨");
 				this.true_varName    = "";
 				this.global_varName  = "";
